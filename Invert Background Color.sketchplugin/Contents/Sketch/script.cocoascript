@@ -1,0 +1,41 @@
+var onRun = function(context) {
+    var doc = context.document
+    var selection = context.selection
+
+    if (selection.count() == 0) {
+        doc.showMessage("Please select a layer.")
+        return
+
+    } else if (selection.count() == 1) {
+        var layer = selection[0]
+        var artboard = doc.currentPage().currentArtboard() || doc.currentPage()
+
+        var fills = layer.style().fills()
+
+        if (fills) {
+            var fillObj
+
+            for (var i = 0; i < fills.count(); i++) {
+                var fill = fills.objectAtIndex(i)
+
+                if (fill.fillType() == 0 && fill.isEnabled()) {
+                    fillObj = fill
+                }
+            }
+
+            if (fillObj) {
+                var bgColor = fillObj.color()
+
+                //Calculate new inverted color
+                var newR = (1-bgColor.red())
+                var newG = (1-bgColor.green())
+                var newB = (1-bgColor.blue())
+
+                //Set the color
+                bgColor.setRed(newR)
+                bgColor.setGreen(newG)
+                bgColor.setBlue(newB)
+            }
+        }
+    }
+};

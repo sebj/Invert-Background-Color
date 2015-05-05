@@ -1,0 +1,25 @@
+{
+  "name" : "Invert Background Color",
+  "description" : "Invert a layer's background color",
+  "author": "Seb Jachec",
+  "authorEmail" : "sjachec1@gmail.com",
+  "version": 1.0,
+  "identifier": "me.sebj.invert-background-color",
+  "compatibleVersion": 3.3,
+  "commands" : [
+    {
+      "script" : "script.cocoascript",
+      "handler" : "onRun",
+      "shortcut" : "control i",
+      "name" : "Invert Background Color",
+      "identifier" : "invert-background-color"
+    }
+  ],
+  "menu" : {
+    "isRoot": true,
+    "items" : [
+      "invert-background-color"
+    ],
+    "title" : "Invert Background Color"
+  }
+}
